@@ -1,0 +1,1058 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Un exemple de client / serveur Vue.js / NestJS">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/vuejs-nestjs-sept-2026/installation-dun-serveur-nestjs.html">
+      
+      
+        <link rel="prev" href="les-fondamentaux.html">
+      
+      
+        <link rel="next" href="les-fonctions-http-de-dart.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>4. Installation d'un serveur NestJS - Un exemple de client / serveur Vue.js / NestJS</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Un exemple de client / serveur Vue.js / NestJS";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4-installation-dun-serveur-nestjs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Un exemple de client / serveur Vue.js / NestJS" class="md-header__button md-logo" aria-label="Un exemple de client / serveur Vue.js / NestJS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Un exemple de client / serveur Vue.js / NestJS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4. Installation d'un serveur NestJS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Passer en mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passer en mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Passer en mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passer en mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/vuejs-nestjs-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Un exemple de client / serveur Vue.js / NestJS" class="md-nav__button md-logo" aria-label="Un exemple de client / serveur Vue.js / NestJS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Un exemple de client / serveur Vue.js / NestJS
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/vuejs-nestjs-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation-dun-environnement-de-travail.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Installation d'un environnement de travail
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="les-fondamentaux.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Les fondamentaux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Installation d'un serveur NestJS
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="installation-dun-serveur-nestjs.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Installation d'un serveur NestJS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41-installation-de-laragon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Installation de Laragon
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-installation-et-configuration-du-serveur-nestjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Installation et configuration du serveur NestJS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-creation-de-la-base-de-donnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Création de la base de données
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-lancement-du-serveur-nestjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4. Lancement du serveur NestJS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45-tests-html-du-serveur-de-calcul-de-limpot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5. Tests HTML du serveur de calcul de l’impôt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-lapi-json-du-serveur-de-calcul-de-limpot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6. L’API jSON du serveur de calcul de l’impôt
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.6. L’API jSON du serveur de calcul de l’impôt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#461-tests-postman" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6.1. Tests Postman
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#462-tests-curl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6.2. Tests curl
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="les-fonctions-http-de-dart.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Les fonctions HTTP de Dart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="clients-http-du-service-de-calcul-de-limpot.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Clients HTTP du service de calcul de l'impôt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="acces-aux-bases-de-donnees.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Accès aux bases de données
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conclusion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Conclusion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="4-installation-dun-serveur-nestjs">4. <span style="color: #2e74b5">Installation d&#x27;un serveur NestJS</span></h1>
+<p>Ce chapitre est repris tel quel du cours TypeScript : l&#x27;installation d&#x27;un serveur web n&#x27;a rien de spécifique à un langage client particulier, et le serveur installé ici sert de cible commune aux deux cours. Seule différence : les nombreuses captures d&#x27;écran du document TypeScript (installation de Laragon, HeidiSQL, Postman - une bonne centaine d&#x27;images au total) ne sont PAS reproduites ici ; le texte, lui, l&#x27;est intégralement. Pour le détail visuel étape par étape, se reporter au document [<em><mark style="background-color: #fff5ce">Introduction au langage TypeScript et au framework NestJS</mark></em>], qui décrit exactement la même installation.</p>
+<p>Note : dans la suite il est fait parfois référence à un serveur PHP, celui référencé dans le cours [<em><mark style="background-color: #fff5ce">Introduction au langage PHP7 par l&#x27;exemple</mark></em>]. Le serveur NestJS implémente les mêmes services que ce serveur PHP.</p>
+<p>Nous allons aborder les fonctions HTTP de Dart, les fonctions qui permettent d&#x27;interroger un serveur web. Pour nos tests, nous avons besoin d&#x27;un serveur web. Nous allons utiliser celui développé pour le cours TypeScript (chapitre [<em><mark style="background-color: #fff5ce">Étude de cas : le serveur de calcul de l&#x27;impôt en NestJS</mark></em>], non repris dans ce cours-ci mais dont le serveur reste utilisé comme cible). Ce serveur abrite un service jSON offrant les services suivants :</p>
+<ul>
+<li>[<em><mark style="background-color: #fff5ce">init-session</mark></em>] - GET [<em><mark style="background-color: #fff5ce">main.php?action=init-session&amp;type=json</mark></em>] - indique au serveur que l&#x27;on veut des réponses jSON ;</li>
+<li>[<em><mark style="background-color: #fff5ce">authentifier-utilisateur</mark></em>] - POST [<em><mark style="background-color: #fff5ce">main.php?action=authentifier-utilisateur</mark></em>] : les deux paramètres postés [<em><mark style="background-color: #fff5ce">user, password</mark></em>] autorisent ou non la connexion au service jSON. Par défaut les identifiants sont [<em><mark style="background-color: #fff5ce">admin, admin</mark></em>] ;</li>
+<li>[<em><mark style="background-color: #fff5ce">calculer-impot</mark></em>] - POST [<em><mark style="background-color: #fff5ce">main.php?action=calculer-impot</mark></em>] : les paramètres postés [<em><mark style="background-color: #fff5ce">marié, enfants, salaire</mark></em>] permettent de calculer un impôt ([<em><mark style="background-color: #fff5ce">marié</mark></em>] : «ou» ou «non», [<em><mark style="background-color: #fff5ce">enfants</mark></em>] : nombre d&#x27;enfants du contribuable, [<em><mark style="background-color: #fff5ce">salaire</mark></em>] : salaire annuel du contribuable) ;</li>
+<li>[<em><mark style="background-color: #fff5ce">lister-simulations</mark></em>] - GET [<em><mark style="background-color: #fff5ce">main.php?action=lister-simulations</mark></em>] - liste les simulations faites depuis le début de la session ;</li>
+<li>[<em><mark style="background-color: #fff5ce">supprimer-simulation</mark></em>] - GET [<em><mark style="background-color: #fff5ce">main.php?action=supprimer-simulation&amp;numéro=x</mark></em>] - supprime la simulation n° x de la liste des simulations ;</li>
+<li>[<em><mark style="background-color: #fff5ce">get-admindata</mark></em>] - GET [<em><mark style="background-color: #fff5ce">main.php?action=get-admindata</mark></em>] - récupère dans un objet jSON la totalité de la base de données associée au serveur ;</li>
+<li>[<em><mark style="background-color: #fff5ce">fin-session</mark></em>] - GET [<em><mark style="background-color: #fff5ce">main.php?action=fin-session</mark></em>] : termine la session. Pour en commencer une autre l&#x27;utilisateur devra émettre l&#x27;ordre «init-session» ci-dessus.</li>
+</ul>
+<h2 id="41-installation-de-laragon">4.1. <span style="color: #1f4d78">Installation de Laragon</span></h2>
+<p>En septembre 2026, l’outil Laragon est disponible à l’URL [<a href="https://laragon.org/download">Download Laragon – Fast &amp; Modern Dev Environment</a> ]. Laragon amène avec lui des outils qui permettent d’installer un serveur PHP et le SGBD MySQL :</p>
+<p><img src="images/10000000000006440000030C86481A8B.png" width="643" height="312" style="width:17cm;height:8.266cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000006440000030C86481A8B.png" /></p>
+<ul>
+<li>en [1], un serveur web Apache ;</li>
+<li>en [2], le SGBD MySQL ;</li>
+<li>en [3], un outil de messagerie que nous n’utiliserons pas ;</li>
+<li>en [4], lance tous les services (Apache, MySQL, MailPit) ;</li>
+<li>en [5], affiche la page web d’URL [<a href="http://localhost/">http://localhost</a>]. Par défaut, cette URL désigne le dossier &lt;laragon-install&gt;\www où &lt;laragon-install&gt; est le dossier d’installation de Laragon ;</li>
+<li>en [6], lance l’Outil HeidiSQL qui permet de gérer des bases de données MySQL. C’est avec cet outil que nous créerons la base de données utilisée par le serveur de calcul de l’impôt ;</li>
+<li>en [7], ouvre un terminal dans lequel tous les binaires utiles à Laragon sont dans le PATH ;</li>
+<li>en [8], ouvre un explorateur windows dans le dossier associé à l’URL [http://localhost] ;</li>
+</ul>
+<p>Le dossier d’installation de Laragon comporte les éléments suivants :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002DB00000324CA05B23E.png" width="314" height="345" style="display:inline-block; margin:4px;width:8.306cm;height:9.133cm;" class="odt-zoomable" data-zoom-src="images/10000000000002DB00000324CA05B23E.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+<li>En [1], le dossier [bin] contient de nombreuses applications :</li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000329000004CE02139058.png" width="404" height="615" style="display:inline-block; margin:4px;width:10.7cm;height:16.27cm;" class="odt-zoomable" data-zoom-src="images/1000000000000329000004CE02139058.png" /></td></tr></table>
+
+<ul>
+<li>En [1], le serveur web Apache ;</li>
+<li>en [2], un terminal de commandes ;</li>
+<li>en [3], un client [git] permettant de versionner les différentes versions d’un projet ;</li>
+<li>en [4], un gestionnaire de bases de données ;</li>
+<li>en [5], un gestionnaire courrier ;</li>
+<li>en [6], le SGBD MySQL ;</li>
+<li>en [7], un autre serveur web ;</li>
+<li>en [8], [node.js] pour exécuter des scripts Javascript ;</li>
+<li>en [9], un éditeur de texte ;</li>
+<li>en [10], l’interpréteur PHP ;</li>
+<li>en [11], l’interpréteur [Python] ;</li>
+<li>en [12], un serveur de cache ;</li>
+</ul>
+<p>Laragon ramène avec lui un environnement de développement conséquent. Dans ce cours, nous n’utiliserons que le SGBD MySQL [6] et [heidisql] pour le gérer graphiquement ;</p>
+<h2 id="42-installation-et-configuration-du-serveur-nestjs">4.2. <span style="color: #1f4d78">Installation et configuration du serveur NestJS</span></h2>
+<p>Un serveur NestJS de calcul très simplifié de l’impôt se trouve dans le dossier <span style="color: #9a3412">nestjs-etude-</span><span style="color: #9a3412">de-cas</span> de l’arborescence des scripts de ce cours :</p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span class="odt-code-line-content">nestjs-etude-de-cas/</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">├── package.json</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">├── nest-cli.json</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">├── .env.example</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">├── <span style="background-color:#fff5ce">create_dbimpots.sql</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">├── src/</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">│   ├── main.ts</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">│   ├── main.controller.ts</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">│   ├── app.module.ts</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">│   ├── actions/</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">│   ├── config/</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">│   ├── entities/</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">│   ├── filters/</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">│   ├── model/</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">│   ├── responses/</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">│   ├── session/</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">│   └── utilities/</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">└── views/</span></span>
+</code></pre></div>
+
+<p>Si vous avez déjà installé les dépendances de l’ensemble de l’arborescence (<span style="color: #9a3412">npm install</span> à la racine, grâce aux <span style="color: #9a3412">workspaces</span> npm décrits dans l’introduction de ce document), le dossier <span style="color: #9a3412">nestjs-etude-de-cas</span> possède déjà son <span style="color: #9a3412">node_modules</span>. Sinon, placez-vous dans ce dossier et exécutez :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>npm install
+</code></pre></div>
+<div style="margin:0 0 0.75em 0; background-color:#fff4ce; padding:0.35em 0.6em"><b>Remarque : </b>si vous avez suivi l’installation groupée décrite dans l’introduction (<span style="color: #9a3412">npm install</span> à la racine de <span style="color: #9a3412">cours-typescript-nestjs-scripts</span>), cette étape est déjà faite : passez directement à la configuration ci-dessous.</div>
+
+<p>Le serveur a besoin d’un fichier <span style="color: #9a3412">.env</span> pour connaître les paramètres de connexion à la base MySQL créée par Laragon (voir ci-dessus) ainsi que le port d’écoute. Copiez le fichier <span style="color: #9a3412">.env.example</span> fourni en <span style="color: #9a3412">.env</span> puis adaptez-le :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>PORT=3000
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>TAX_DATA_SOURCE=mysql
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>DB_HOST=localhost
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>DB_PORT=3306
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>DB_NAME=dbimpots-2019
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>DB_USER=admimpots
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>DB_PASSWORD=mdpimpots
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>CORS_ALLOWED=true
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>SESSION_SECRET=change-moi-en-production
+</code></pre></div>
+<ul>
+<li><span style="color: #9a3412">PORT</span> : le port d’écoute du serveur NestJS (<span style="color: #9a3412">3000</span> par défaut).</li>
+<li><span style="color: #9a3412">TAX_DATA_SOURCE</span> : <span style="color: #9a3412">mysql</span> pour utiliser la base de données créée ci-dessous ;</li>
+<li><span style="color: #9a3412">DB_HOST</span>, <span style="color: #9a3412">DB_PORT</span>, <span style="color: #9a3412">DB_NAME</span>, <span style="color: #9a3412">DB_USER</span>, <span style="color: #9a3412">DB_PASSWORD</span> : les paramètres de connexion à la base <span style="color: #9a3412">dbimpots-2019</span> que nous allons créer avec HeidiSQL (voir ci-dessous) — mêmes identifiants que ceux définis dans le script <span style="color: #9a3412">create_dbimpots.sql</span> présenté dans l’arborescence ci-dessus ;</li>
+<li><span style="color: #9a3412">CORS_ALLOWED</span> : autorise les appels <span style="color: #9a3412">CORS</span> depuis un client TypeScript exécuté sur un autre port.</li>
+<li><span style="color: #9a3412">SESSION_SECRET</span> : la clé utilisée pour signer le cookie de session — changez-la si le serveur doit un jour être exposé publiquement.</li>
+</ul>
+<h2 id="43-creation-de-la-base-de-donnees">4.3. <span style="color: #1f4d78">Création de la base de données</span></h2>
+<p>Pour créer la base de données MySQL nécessaire au serveur NestJS, nous utilisons une option de Laragon :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000006440000030C352A3F89.png" width="503" height="244" style="display:inline-block; margin:4px;width:13.301cm;height:6.468cm;" class="odt-zoomable" data-zoom-src="images/10000000000006440000030C352A3F89.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+<li>En [1], tous les services doivent être lancés ;</li>
+<li>en [2], l’option [Database] vous permet de gérer la base de données ;</li>
+</ul>
+<p>L’option [Database] lance un utilitaire appelé HeidiSQL :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000008D2000003C91FBD37B4.png" width="621" height="266" style="display:inline-block; margin:4px;width:16.431cm;height:7.05cm;" class="odt-zoomable" data-zoom-src="images/10000000000008D2000003C91FBD37B4.png" /></td></tr></table>
+
+<ul>
+<li>En [1], vous pouvez sélectionner divers SGBD. La valeur par défaut proposée est le SGBD MySQL. Cela convient ;</li>
+<li>en [2], vous ouvrez une session de HeidiSQL ;</li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003FD0000018A35CBA47C.png" width="357" height="138" style="display:inline-block; margin:4px;width:9.449cm;height:3.649cm;" class="odt-zoomable" data-zoom-src="images/10000000000003FD0000018A35CBA47C.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002A4000001C70316A390.png" width="237" height="159" style="display:inline-block; margin:4px;width:6.26cm;height:4.21cm;" class="odt-zoomable" data-zoom-src="images/10000000000002A4000001C70316A390.png" /></td></tr></table>
+
+<ul>
+<li>En [1-2], exécutez un fichier SQL puis choisissez le fichier [create_dbimpots.sql] que vous trouverez dans le dossier [nestjs-etude-de-cas] :</li>
+</ul>
+<p><img src="images/100000000000018B0000020AC3036437.png" width="198" height="261" style="width:5.226cm;height:6.906cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000018B0000020AC3036437.png" /></p>
+<p>L’exécution du fichier [2] va créer la base [dbimpots-2019] utilisée par le serveur de calcul de l’impôt. Pour le voir, faites F5 dans HeidiSQL pour rafraîchir l’affichage :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002B300000226D53BFF4F.png" width="314" height="250" style="display:inline-block; margin:4px;width:8.306cm;height:6.609cm;" class="odt-zoomable" data-zoom-src="images/10000000000002B300000226D53BFF4F.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>La base de données [dbimpots-2019] a été créée.</p>
+<h2 id="44-lancement-du-serveur-nestjs">4.4. <span style="color: #1f4d78">Lancement du serveur NestJS</span></h2>
+<p>Une fois le fichier <span style="color: #9a3412">.env</span> en place (et la base de données créée), ouvrez un terminal à la racine du dossier [nestjs-etude-de-cas], puis compilez et lancez le serveur :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>npm run build
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>npm run start:prod
+</code></pre></div>
+<p>Pour le développement, avec redémarrage automatique à chaque modification du code source, préférez :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>npm run start:dev
+</code></pre></div>
+<p>Dans les deux cas, la console affiche :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[Nest] ... [NestFactory] Starting Nest application...
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>[Nest] ... [InstanceLoader] AppModule dependencies initialized
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>[Nest] ... [RoutesResolver] MainController {/}:
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>[Nest] ... [RouterExplorer] Mapped {/main.php, ALL} route
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>[Nest] ... [NestApplication] Nest application successfully started
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>Serveur de calcul de l’impôt (NestJS) démarré sur http://localhost:3000
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>Point d’entrée jSON : http://localhost:3000/main.php?action=init-session&amp;type=json
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>Point d’entrée HTML : http://localhost:3000/main.php?action=init-session&amp;type=html
+</code></pre></div>
+<p>Le serveur NestJS a un point d’entrée unique (<span style="color: #9a3412">main.php</span>, conservé par compatibilité bien qu’il s’agisse ici de NestJS) recevant toutes les requêtes, et un paramètre de requête <span style="color: #9a3412">action</span> qui sélectionne le traitement à exécuter :</p>
+<h2 id="45-tests-html-du-serveur-de-calcul-de-limpot">4.5. <span style="color: #1f4d78">Tests HTML du serveur de calcul de l’impôt</span></h2>
+<p>Si ce n’est déjà fait, lancez tous les services de Laragon (pour MySQL) ainsi que le serveur NestJS (<span style="color: #9a3412">npm run start:prod</span> ou <span style="color: #9a3412">npm run start:dev</span>, voir ci-dessus). Puis, dans un navigateur, demandez l’URL <span style="color: #9a3412">http://localhost:3000/main.php?action=init-session&amp;type=html</span> — c’est la même action <span style="color: #9a3412">init-session</span> que pour le serveur PHP, avec le même paramètre <span style="color: #9a3412">type=html</span>, mais sur le port 3000 :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000046A000001FE5F7732B2.png" width="529" height="239" style="display:inline-block; margin:4px;width:14cm;height:6.318cm;" class="odt-zoomable" data-zoom-src="images/100000000000046A000001FE5F7732B2.png" /></td></tr></table>
+
+<p>Les identifiants sont <span style="color: #9a3412">admin</span>/<span style="color: #9a3412">admin</span>, exactement comme pour le serveur PHP — ils sont définis de la même façon, dans le code du serveur plutôt que dans <span style="color: #9a3412">config.json</span>. Validez-les :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000046A000002450B06427B.png" width="529" height="272" style="display:inline-block; margin:4px;width:14cm;height:7.198cm;" class="odt-zoomable" data-zoom-src="images/100000000000046A000002450B06427B.png" /></td></tr></table>
+
+<p>Remplissez le formulaire puis validez-le. On obtient la page suivante :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000046A000002F763287DD5.png" width="529" height="355" style="display:inline-block; margin:4px;width:14cm;height:9.403cm;" class="odt-zoomable" data-zoom-src="images/100000000000046A000002F763287DD5.png" /></td></tr></table>
+
+<p>Le résultat du calcul de l’impôt s’affiche — cette page utilise bien la base de données que nous venons de créer. Le lien « Liste des simulations » du menu de gauche affiche l’historique des calculs de la session :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000046A000001B2FA555E9A.png" width="529" height="203" style="display:inline-block; margin:4px;width:14cm;height:5.376cm;" class="odt-zoomable" data-zoom-src="images/100000000000046A000001B2FA555E9A.png" /></td></tr></table>
+
+<p>Si vous obtenez ces résultats, le serveur NestJS de calcul de l’impôt fonctionne correctement, avec sa base de données MySQL. Nous sommes désormais prêts pour interroger le serveur avec des clients TypeScript. Pour cela, nous allons utiliser la version jSON du serveur.</p>
+<h2 id="46-lapi-json-du-serveur-de-calcul-de-limpot">4.6. <span style="color: #1f4d78">L’API jSON du serveur de calcul de l’impôt</span></h2>
+<h3 id="461-tests-postman">4.6.1. <span style="color: #2e74b5">Tests Postman</span></h3>
+<p>Le serveur PHP se testait avec l’outil de bureau Postman. La même collection de requêtes (<span style="color: #9a3412">impots-servers-tests.postman_collection.json</span>, fournie dans le dossier <span style="color: #9a3412">netjs-cours</span>) fonctionne à l’identique contre le serveur NestJS : l’API jSON est rigoureusement la même — mêmes actions, mêmes paramètres, mêmes codes <span style="color: #9a3412">état</span>. Il suffit, dans Postman, de changer le port de chaque requête (<span style="color: #9a3412">80</span> → <span style="color: #9a3412">3000</span>), ou plus simplement l’<span style="color: #9a3412">URL de base</span> de la collection si vous l’avez définie comme variable.</p>
+<p>L’outil Postman est disponible à l’URL [<a href="https://www.postman.com/downloads/">https://www.postman.com/downloads/</a>]. Vous aurez peut-être à créer un compte.</p>
+<p>Lancez tous les services de Laragon, puis ouvrez l’application de bureau Postman :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002DD000001CDECEE907C.png" width="294" height="184" style="display:inline-block; margin:4px;width:7.766cm;height:4.881cm;" class="odt-zoomable" data-zoom-src="images/10000000000002DD000001CDECEE907C.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000020D0000014C25D78584.png" width="263" height="166" style="display:inline-block; margin:4px;width:6.946cm;height:4.392cm;" class="odt-zoomable" data-zoom-src="images/100000000000020D0000014C25D78584.png" /></td></tr></table>
+
+<ul>
+<li>En [1-2], créez une requête HTTP pour interroger le serveur de calcul de l’impôt ;</li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000489000001E8A75DCF2D.png" width="465" height="195" style="display:inline-block; margin:4px;width:12.291cm;height:5.159cm;" class="odt-zoomable" data-zoom-src="images/1000000000000489000001E8A75DCF2D.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+<li>En [1], vous pouvez donner un nom à votre requête HTTP. Vous pourrez la sauvegarder et la retrouver;</li>
+<li>en [2] : mettez l’URL du serveur que vous voulez interroger ;</li>
+<li>en [3] : choissez le type de requête HTTP. Nous en utiliserons deux dans ce qui suit : GET et POST ;</li>
+<li>en [4] : si votre requête a des paramètres du type [?param1=val1&amp;param2=val2&amp;…], vous pouvez les définir ici;</li>
+<li>en [5] : si le type de requête est POST, c’est ici que vous défénirez les valeurs postées ;</li>
+</ul>
+<p>Dans [nestjs-cours], vous trouverez une collection de requêtes HTTP vers le serveur de calcul de l’impôt que vous pouvez importer dans POSTMAN.</p>
+<p><img src="images/100000000000026C000001A4C372851A.png" width="310" height="210" style="width:8.202cm;height:5.556cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000026C000001A4C372851A.png" /></p>
+<p>Procédez de la façon suivante. Dans Postman faites [Ctrl-O] :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003F80000026C727A3698.png" width="406" height="248" style="display:inline-block; margin:4px;width:10.749cm;height:6.56cm;" class="odt-zoomable" data-zoom-src="images/10000000000003F80000026C727A3698.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+<li>Utilisez le lien [1] pour importer le fichier [impots-servers-tests.postman_collection.json] du dossier [netjs-cours] :</li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000023A0000036167185DE7.png" width="285" height="432" style="display:inline-block; margin:4px;width:7.541cm;height:11.441cm;" class="odt-zoomable" data-zoom-src="images/100000000000023A0000036167185DE7.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+<li>En [1], le nom de la collection importée ;</li>
+<li>en [2], son contenu. C’est une liste de requêtes HTTP vers le serveur jSON du calcul de l’impôt ;</li>
+</ul>
+<p>Voyons par exemple la requête nommée [init-session-json-700]. Elle initialise une session jSON avec le serveur :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000058B0000023A657300CB.png" width="426" height="171" style="display:inline-block; margin:4px;width:11.261cm;height:4.524cm;" class="odt-zoomable" data-zoom-src="images/100000000000058B0000023A657300CB.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+<li>En [1], la requête HTTP est un GET ;</li>
+<li>en [2], l’URL interrogée. Elle demande à initier un dialogue jSON avec le serveur ;</li>
+<li>en [3-4], on retrouve les paramètres du GET ;</li>
+<li>en [5], pour envoyer la requête au serveur du calcul de l’impôt ;</li>
+</ul>
+<p>Avant d’envoyer la requête assurez-vous que vous avez bien lancé les services de Laragon. La réponse jSON du serveur est la suivante :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003D90000017FE959F671.png" width="457" height="178" style="display:inline-block; margin:4px;width:12.102cm;height:4.706cm;" class="odt-zoomable" data-zoom-src="images/10000000000003D90000017FE959F671.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Utilisez maintenant la requête nommée [init-session-703] :</p>
+<p><img src="images/10000000000003EE000002034E3A763A.png" width="488" height="251" style="width:12.91cm;height:6.629cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003EE000002034E3A763A.png" /></p>
+<p>La requête [1-3] est invalide. En effet les paramètres doivent être du type [?action=xx&amp;type=yy] où type peut être ‘html’, ‘xml’ ou ‘json’. Le type ‘x’ ne sera pas reconnu. La réponse jSON du serveur est la suivante :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000049C0000014E5C6DDB27.png" width="374" height="106" style="display:inline-block; margin:4px;width:9.904cm;height:2.803cm;" class="odt-zoomable" data-zoom-src="images/100000000000049C0000014E5C6DDB27.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Rejouez la requête [init-session-json-700] pour redémarrer une session jSON. Puis jouez la requête [authentifier-utilisateur-200] pour vous identifier :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000041F00000213B67C9E9D.png" width="496" height="248" style="display:inline-block; margin:4px;width:13.12cm;height:6.572cm;" class="odt-zoomable" data-zoom-src="images/100000000000041F00000213B67C9E9D.png" /></td></tr></table>
+
+<ul>
+<li>En [1], la requête est un POST ;</li>
+<li>en [2], l’URL d’authentification ;</li>
+<li>en [3], le corps du POST qui contient les valeurs postées ;</li>
+<li>en [4-5], les deux valeurs postées. Ce sont les identifiants de l’administrateur de l’application. Ils sont définis dans le fichier [config.service.ts] du serveur ;</li>
+</ul>
+<p><img src="images/10000000000001B10000021161CB11A6.png" width="217" height="265" style="width:5.729cm;height:6.999cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001B10000021161CB11A6.png" /></p>
+<p>La réponse jSON du serveur est la suivante :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000042C00000153667C5305.png" width="427" height="136" style="display:inline-block; margin:4px;width:11.299cm;height:3.59cm;" class="odt-zoomable" data-zoom-src="images/100000000000042C00000153667C5305.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Une fois que vous êtes authentifié, vous pouvez faire un calcul d’impôt. Utilisez pour cela la requête [calculer-impot-300] :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003E400000226343A09A7.png" width="465" height="256" style="display:inline-block; margin:4px;width:12.303cm;height:6.77cm;" class="odt-zoomable" data-zoom-src="images/10000000000003E400000226343A09A7.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<ul>
+<li>En [1], c’est une requête POST ;</li>
+<li>en [2], l’URL appelée ;</li>
+<li>en [3-4], les trois valeurs postées ;</li>
+</ul>
+<p>La réponse jSON est la suivante :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003DC00000292646CB948.png" width="461" height="307" style="display:inline-block; margin:4px;width:12.197cm;height:8.123cm;" class="odt-zoomable" data-zoom-src="images/10000000000003DC00000292646CB948.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>Rejouez la requête plusieurs fois en changeant les valeurs postées. Ceci fait, jouez la requête [lister-simulations] qui va afficher la listes des simulations que vous avez faites :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000484000001D8BFB5BCE4.png" width="578" height="235" style="display:inline-block; margin:4px;width:15.289cm;height:6.227cm;" class="odt-zoomable" data-zoom-src="images/1000000000000484000001D8BFB5BCE4.png" /></td></tr></table>
+
+<ul>
+<li>La requête GET [1-4] a le seul paramètre [action]. La réponse jSON est la suivante :</li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002A600000419B6784BFB.png" width="339" height="525" style="display:inline-block; margin:4px;width:8.969cm;height:13.878cm;" class="odt-zoomable" data-zoom-src="images/10000000000002A600000419B6784BFB.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>C’est la liste des simulations que vous avez faites.</p>
+<p>Utilisez la requête [supprimer-simulation-600] pour supprimer une simulation :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000004C8000002088796A8C4.png" width="612" height="260" style="display:inline-block; margin:4px;width:16.191cm;height:6.879cm;" class="odt-zoomable" data-zoom-src="images/10000000000004C8000002088796A8C4.png" /></td></tr></table>
+
+<ul>
+<li>En [2], l’URL est interrogée avec un GET. Elle comprend deux paramètres [action, numéro]. [numéro] est le n° de la simulation que vous voulez supprimer de la liste des simulations. Ici le numéro 0 désigne la première simulation de la liste ;</li>
+</ul>
+<p>La réponse jSON du serveur est la suivante :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000002A1000002E6FA9A8F20.png" width="337" height="371" style="display:inline-block; margin:4px;width:8.904cm;height:9.816cm;" class="odt-zoomable" data-zoom-src="images/10000000000002A1000002E6FA9A8F20.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>La réponse jSON est la liste restante des simulations après suppression de l’une d’entre elles ;</p>
+<p>Enfin vous pouvez terminer la session avec la requête [fin-session-400] :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000046B0000022EE2E381F9.png" width="420" height="207" style="display:inline-block; margin:4px;width:11.104cm;height:5.477cm;" class="odt-zoomable" data-zoom-src="images/100000000000046B0000022EE2E381F9.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p>L’URL [1-2] n’a que le paramètre [action] (3). La réponse jSON est la suivante :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003600000014BBAD0269D.png" width="294" height="112" style="display:inline-block; margin:4px;width:7.766cm;height:2.976cm;" class="odt-zoomable" data-zoom-src="images/10000000000003600000014BBAD0269D.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<h3 id="462-tests-curl">4.6.2. <span style="color: #2e74b5">Tests curl</span></h3>
+<p>Nous pouvons utiliser également l’outil [<a href="https://curl.se/">curl</a>] pour tester les services jSON du serveur. Toutes les requêtes qui suivent utilisent la même session HTTP (l’option <span style="color: #9a3412">-b/-c cookies.txt</span> de <span style="color: #9a3412">curl</span> conserve le cookie de session entre deux appels, comme le ferait un navigateur ou Postman) :</p>
+<p>Démarrons une session jSON avec l’action <span style="color: #9a3412">[init-session]</span> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>curl -c cookies.txt "http://localhost:3000/main.php?action=init-session&amp;type=json"
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="s2">"action"</span><span class="o">:</span><span class="w"> </span><span class="s2">"init-session"</span><span class="p">,</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="s2">"état"</span><span class="o">:</span><span class="w"> </span><span class="mf">700</span><span class="p">,</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="s2">"réponse"</span><span class="o">:</span><span class="w"> </span><span class="s2">"session démarrée avec type [json]"</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">}</span>
+</code></pre></div>
+<p>L’état <span style="color: #9a3412">700</span> confirme le démarrage de la session — c’est le même code que renvoyait le serveur PHP. Authentifions-nous maintenant avec l’action <span style="color: #9a3412">[authentifier-utilisateur]</span> — une requête <span style="color: #9a3412">POST</span>, avec un seul paramètre dans l’URL (<span style="color: #9a3412">action</span>) et les identifiants postés :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>curl -b cookies.txt -c cookies.txt -X POST "http://localhost:3000/main.php?action=authentifier-utilisateur" \
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>     -d "user=admin&amp;password=admin"
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>{
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>  "action": "authentifier-utilisateur",
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>  "état": 200,
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>  "réponse": "Authentification réussie [admin, admin]"
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>}
+</code></pre></div>
+<p>On peut désormais calculer un impôt avec l’action <span style="color: #9a3412">[calculer-impot]</span>, toujours en <span style="color: #9a3412">POST</span> avec les trois paramètres postés <span style="color: #9a3412">marié</span>, <span style="color: #9a3412">enfants</span> et <span style="color: #9a3412">salaire</span> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>curl -b cookies.txt -c cookies.txt -X POST "http://localhost:3000/main.php?action=calculer-impot" \
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>     -d "marié=oui&amp;enfants=2&amp;salaire=45000"
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>{
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  "action": "calculer-impot",
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  "état": 300,
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>  "réponse": {
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    "marié": "oui",
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    "enfants": 2,
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    "salaire": 45000,
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    "impôt": 502,
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    "surcôte": 0,
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>    "décôte": 857,
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    "réduction": 126,
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>    "taux": 0.14
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>  }
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>}
+</code></pre></div>
+<p>On retrouve exactement les mêmes valeurs (502 € d’impôt, décôte de 857 €, réduction de 126 €, taux de 14 %) que celles affichées dans le navigateur à la section précédente — les deux versions HTML et jSON partagent le même moteur de calcul. La liste des simulations s’obtient avec l’action <span style="color: #9a3412">[lister-simulations]</span>, un simple <span style="color: #9a3412">GET</span> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>curl -b cookies.txt -c cookies.txt "http://localhost:3000/main.php?action=lister-simulations"
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>{
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>  "action": "lister-simulations",
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>  "état": 500,
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>  "réponse": [
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    {
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>      "marié": "oui", "enfants": 2, "salaire": 45000,
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>      "impôt": 502, "surcôte": 0, "décôte": 857, "réduction": 126, "taux": 0.14
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>    }
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>  ]
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>}
+</code></pre></div>
+<p>Rejouez la requête <span style="color: #9a3412">[calculer-impot]</span> plusieurs fois en changeant les valeurs postées, puis utilisez <span style="color: #9a3412">[supprimer-simulation]</span> pour retirer une simulation de la liste (<span style="color: #9a3412">&amp;numéro=x</span> désigne son numéro d’ordre), et <span style="color: #9a3412">[get-admindata]</span> pour récupérer la totalité de la base de données au format jSON (tranches d’imposition et constantes de calcul). Terminez enfin la session avec l’action <span style="color: #9a3412">[fin-session]</span> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>curl -b cookies.txt -c cookies.txt "http://localhost:3000/main.php?action=fin-session"
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>{
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>  "action": "fin-session",
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>  "état": 400,
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>  "réponse": "session supprimée"
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>}
+</code></pre></div>
+<p>Vous avez maintenant une bonne idée de l’API jSON exposée par le serveur NestJS de calcul de l’impôt — rigoureusement identique à celle du serveur PHP. Nous allons pouvoir aborder l’écriture de scripts TypeScript qui interrogent ce serveur.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Ce cours-tutoriel rédigé par l'IA <strong>Claude</strong> d'Anthropic et révisé par <strong>Serge Tahé</strong> est mis à la disposition du public selon les termes de la
+        <em>Licence Creative Commons Attribution – Pas d'utilisation commerciale –
+        Partage dans les mêmes conditions 3.0 non modifiée</em>.
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>

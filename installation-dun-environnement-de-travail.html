@@ -1,0 +1,791 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Un exemple de client / serveur Vue.js / NestJS">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/vuejs-nestjs-sept-2026/installation-dun-environnement-de-travail.html">
+      
+      
+        <link rel="prev" href="introduction.html">
+      
+      
+        <link rel="next" href="les-fondamentaux.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>2. Installation d'un environnement de travail - Un exemple de client / serveur Vue.js / NestJS</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Un exemple de client / serveur Vue.js / NestJS";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2-installation-dun-environnement-de-travail" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Un exemple de client / serveur Vue.js / NestJS" class="md-header__button md-logo" aria-label="Un exemple de client / serveur Vue.js / NestJS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Un exemple de client / serveur Vue.js / NestJS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. Installation d'un environnement de travail
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Passer en mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passer en mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Passer en mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passer en mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/vuejs-nestjs-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Un exemple de client / serveur Vue.js / NestJS" class="md-nav__button md-logo" aria-label="Un exemple de client / serveur Vue.js / NestJS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Un exemple de client / serveur Vue.js / NestJS
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/vuejs-nestjs-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Installation d'un environnement de travail
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="installation-dun-environnement-de-travail.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Installation d'un environnement de travail
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-verification-des-outils-installes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Vérification des outils installés
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-mise-en-place-du-projet-vscode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Mise en place du projet VSCode
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2. Mise en place du projet VSCode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221-le-fichier-pubspecyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2.1. Le fichier pubspec.yaml
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-premier-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Premier script
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-second-script-lanalyse-statique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Second script : l&#x27;analyse statique
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-le-linter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Le linter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-extension-vscode-dart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6. Extension VSCode Dart
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="les-fondamentaux.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Les fondamentaux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation-dun-serveur-nestjs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Installation d'un serveur NestJS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="les-fonctions-http-de-dart.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Les fonctions HTTP de Dart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="clients-http-du-service-de-calcul-de-limpot.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Clients HTTP du service de calcul de l'impôt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="acces-aux-bases-de-donnees.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Accès aux bases de données
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conclusion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Conclusion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="2-installation-dun-environnement-de-travail">2. <span style="color: #2e74b5">Installation d&#x27;un environnement de travail</span></h1>
+<p><strong>Note</strong> : dans la suite, on utilise l’outil <a href="https://code.visualstudio.com/">VSCode</a> pour tester les scripts Dart. Ouvrez deux fenêtres VSCode et ouvrez [File / Open Folder] les dossiers des deux projets.</p>
+<p>Le cours TypeScript installe Node.js, un projet npm ([<em><mark style="background-color: #fff5ce">package.json</mark></em>]), TypeScript lui-même et son vérificateur de types ([<em><mark style="background-color: #fff5ce">tsc</mark></em>]), un exécuteur de scripts sans compilation préalable ([<em><mark style="background-color: #fff5ce">tsx</mark></em>]), puis ESLint. L&#x27;équivalent Dart de toute cette chaîne d&#x27;outils tient en un seul composant à installer : le [<em><mark style="background-color: #fff5ce">SDK Dart</mark></em>] - téléchargeable sur [<em><mark style="background-color: #fff5ce">dart.dev</mark></em>] ou, plus simplement, installé via un gestionnaire de paquets système ([<em><mark style="background-color: #fff5ce">choco install dart-sdk</mark></em>] sous Windows, [<em><mark style="background-color: #fff5ce">brew install dart</mark></em>] sous macOS, ou le dépôt APT officiel sous Linux/Debian/Ubuntu).</p>
+<p>Là où TypeScript a besoin de trois outils distincts (le compilateur [<em><mark style="background-color: #fff5ce">tsc</mark></em>] pour vérifier les types, [<em><mark style="background-color: #fff5ce">tsx</mark></em>] pour exécuter un script sans l&#x27;avoir compilé au préalable, et ESLint pour l&#x27;analyse de style), le SDK Dart fournit tout cela dans une seule commande, [<em><mark style="background-color: #fff5ce">dart</mark></em>], dotée de sous-commandes : [<em><mark style="background-color: #fff5ce">dart run</mark></em>] (exécute un script), [<em><mark style="background-color: #fff5ce">dart analyze</mark></em>] (vérifie les types ET le style - l&#x27;équivalent combiné de [<em><mark style="background-color: #fff5ce">tsc</mark></em>] ET d&#x27;ESLint), [<em><mark style="background-color: #fff5ce">dart pub</mark></em>] (gère les dépendances, l&#x27;équivalent de [<em><mark style="background-color: #fff5ce">npm</mark></em>]), [<em><mark style="background-color: #fff5ce">dart format</mark></em>] (reformate le code, l&#x27;équivalent de Prettier) et [<em><mark style="background-color: #fff5ce">dart test</mark></em>] (lance les tests).</p>
+<h2 id="21-verification-des-outils-installes">2.1. <span style="color: #2e74b5">Vérification des outils installés</span></h2>
+<p>Une fois le SDK installé, on vérifie l&#x27;installation dans un terminal VSCode :</p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">PS C:\Data\st-2026\dev\dart\dart-sept-2026-scripts\dart-fondamentaux&gt; <span style="background-color:#fff5ce">dart --version</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Dart SDK version: <span style="background-color:#fff5ce">3.12.2</span> (stable) (Tue Jun 9 01:11:39 2026 -0700) on &quot;windows_x64&quot;</span></span>
+</code></pre></div>
+
+<p>qui affiche la version du SDK (par exemple [<em><mark style="background-color: #fff5ce">Dart SDK version: 3.5.0 (stable)</mark></em>]). Contrairement à Node.js et TypeScript, installés séparément (une version de Node, une version de TypeScript), le numéro de version du SDK Dart couvre à la fois le langage, le compilateur et l&#x27;ensemble des outils commandés par [<em><mark style="background-color: #fff5ce">dart</mark></em>] : il n&#x27;y a qu&#x27;une seule version à suivre.</p>
+<h2 id="22-mise-en-place-du-projet-vscode">2.2. <span style="color: #2e74b5">Mise en place du projet VSCode</span></h2>
+<p>Comme pour TypeScript, on crée un dossier de projet et on l&#x27;ouvre dans VSCode. Là où un projet TypeScript se déclare avec deux fichiers ([<em><mark style="background-color: #fff5ce">package.json</mark></em>] pour les dépendances, [<em><mark style="background-color: #fff5ce">tsconfig.json</mark></em>] pour les options du compilateur), un projet Dart n&#x27;en a besoin que d&#x27;un seul : [<em><mark style="background-color: #fff5ce">pubspec.yaml</mark></em>].</p>
+<h3 id="221-le-fichier-pubspecyaml">2.2.1. <span style="color: #1f4d78">Le fichier <code>pubspec.yaml</code></span></h3>
+<p>[<em><mark style="background-color: #fff5ce">pubspec.yaml</mark></em>] joue à la fois le rôle de [<em><mark style="background-color: #fff5ce">package.json</mark></em>] (nom du projet, dépendances) et, dans une moindre mesure, de [<em><mark style="background-color: #fff5ce">tsconfig.json</mark></em>] (la clé [<em><mark style="background-color: #fff5ce">environment: sdk:</mark></em>] fixe la plage de versions du SDK Dart acceptée, un peu comme [<em><mark style="background-color: #fff5ce">target</mark></em>]/[<em><mark style="background-color: #fff5ce">lib</mark></em>] fixent la version d&#x27;ECMAScript ciblée par [<em><mark style="background-color: #fff5ce">tsc</mark></em>]) :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span>
+<span class="normal"><a href="#__codelineno-0-8">8</a></span>
+<span class="normal"><a href="#__codelineno-0-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>name: dart_fondamentaux
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>description: Scripts du cours "Introduction au langage Dart par l'exemple"
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>publish_to: 'none'
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>environment:
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>  sdk: '&gt;=3.3.0 &lt;4.0.0'
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>dependencies:
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>  http: ^1.2.0
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>  dio: ^5.4.0
+</code></pre></div></td></tr></table></div>
+<p>À la différence du YAML de [<em><mark style="background-color: #fff5ce">package.json</mark></em>] (au format JSON), [<em><mark style="background-color: #fff5ce">pubspec.yaml</mark></em>] est un fichier YAML à proprement parler - l&#x27;indentation y est significative, exactement comme en Python.</p>
+<p>Une fois ce fichier écrit, la commande [<em><mark style="background-color: #fff5ce">dart pub get</mark></em>] (équivalent de [<em><mark style="background-color: #fff5ce">npm install</mark></em>]) télécharge les dépendances déclarées et génère un fichier [<em><mark style="background-color: #fff5ce">pubspec.lock</mark></em>] (équivalent de [<em><mark style="background-color: #fff5ce">package-lock.json</mark></em>]), qui fige les versions exactes installées.</p>
+<h2 id="23-premier-script">2.3. <span style="color: #2e74b5">Premier script</span></h2>
+<p>Un script Dart minimal, [<em><mark style="background-color: #fff5ce">bonjour.dart</mark></em>] :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>  <span class="nb">print</span><span class="p">(</span><span class="s1">'Bonjour Dart !'</span><span class="p">);</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>se lance avec :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>dart run bonjour.dart
+</code></pre></div></td></tr></table></div>
+<p>Deux différences immédiates avec le premier script TypeScript du cours : la fonction [<em><mark style="background-color: #fff5ce">main</mark></em>] est ici OBLIGATOIRE (un script Dart exécutable doit définir une fonction [<em><mark style="background-color: #fff5ce">main</mark></em>] au niveau du fichier - contrairement à TypeScript/[<em><mark style="background-color: #fff5ce">tsx</mark></em>], où le code de plus haut niveau du fichier s&#x27;exécute directement, sans fonction à définir) ; et [<em><mark style="background-color: #fff5ce">dart run</mark></em>] compile et exécute le script en une seule étape, sans étape de transpilation séparée visible (comme [<em><mark style="background-color: #fff5ce">tsx</mark></em>], mais sans outil supplémentaire à installer : [<em><mark style="background-color: #fff5ce">dart run</mark></em>] fait partie du SDK lui-même).</p>
+<h2 id="24-second-script-lanalyse-statique">2.4. <span style="color: #2e74b5">Second script : l&#x27;analyse statique</span></h2>
+<p>Là où le cours TypeScript distingue une étape de «vérification de types» ([<em><mark style="background-color: #fff5ce">tsc --noEmit</mark></em>]) et une étape ESLint distincte, Dart fusionne les deux dans une seule commande :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>dart analyze
+</code></pre></div></td></tr></table></div>
+<p>lancée sans argument depuis la racine d&#x27;un projet muni d&#x27;un [<em><mark style="background-color: #fff5ce">pubspec.yaml</mark></em>], analyse tous les fichiers [<em><mark style="background-color: #fff5ce">.dart</mark></em>] du projet : elle signale à la fois les erreurs de type (l&#x27;équivalent de [<em><mark style="background-color: #fff5ce">tsc</mark></em>]) et les problèmes de style couverts par les règles de lint activées (l&#x27;équivalent d&#x27;ESLint) - voir la section suivante pour l&#x27;activation de ces règles.</p>
+<h2 id="25-le-linter">2.5. <span style="color: #2e74b5">Le linter</span></h2>
+<p>ESLint est un outil externe, à installer et à configurer séparément (fichier [<em><mark style="background-color: #fff5ce">eslint.config.js</mark></em>], choix d&#x27;un preset...). Dart intègre son propre linter directement dans [<em><mark style="background-color: #fff5ce">dart analyze</mark></em>] : il suffit d&#x27;ajouter le paquet officiel [<em><mark style="background-color: #fff5ce">package:lints</mark></em>] aux [<em><mark style="background-color: #fff5ce">dev_dependencies</mark></em>] du [<em><mark style="background-color: #fff5ce">pubspec.yaml</mark></em>], puis de créer un fichier [<em><mark style="background-color: #fff5ce">analysis_options.yaml</mark></em>] à la racine du projet :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nl">include</span><span class="p">:</span><span class="w"> </span><span class="n">package</span><span class="p">:</span><span class="n">lints</span><span class="o">/</span><span class="n">recommended</span><span class="p">.</span><span class="na">yaml</span>
+</code></pre></div></td></tr></table></div>
+<p>Ce seul fichier joue le rôle du [<em><mark style="background-color: #fff5ce">eslint.config.js</mark></em>] du cours TypeScript : il active un jeu de règles recommandées par l&#x27;équipe Dart (variables inutilisées, comparaisons suspectes, préférence pour [<em><mark style="background-color: #fff5ce">const</mark></em>], etc.), que [<em><mark style="background-color: #fff5ce">dart analyze</mark></em>] applique ensuite automatiquement.</p>
+<h2 id="26-extension-vscode-dart">2.6. <span style="color: #2e74b5">Extension VSCode Dart</span></h2>
+<p>L&#x27;extension officielle [<em><mark style="background-color: #fff5ce">Dart</mark></em>] (éditeur : Dart Code), installée depuis le marché d&#x27;extensions de VSCode, joue exactement le même rôle que l&#x27;extension ESLint du cours TypeScript, mais en plus complet : coloration syntaxique, complétion, affichage des erreurs de [<em><mark style="background-color: #fff5ce">dart analyze</mark></em>] directement dans l&#x27;éditeur, et lancement des scripts (bouton [<em><mark style="background-color: #fff5ce">Run</mark></em>]/[<em><mark style="background-color: #fff5ce">Debug</mark></em>] au-dessus de chaque fonction [<em><mark style="background-color: #fff5ce">main</mark></em>]) sans quitter VSCode. Installer cette seule extension suffit à couvrir ce que le cours TypeScript répartit entre plusieurs extensions.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Ce cours-tutoriel rédigé par l'IA <strong>Claude</strong> d'Anthropic et révisé par <strong>Serge Tahé</strong> est mis à la disposition du public selon les termes de la
+        <em>Licence Creative Commons Attribution – Pas d'utilisation commerciale –
+        Partage dans les mêmes conditions 3.0 non modifiée</em>.
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
