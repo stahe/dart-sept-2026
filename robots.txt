@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://stahe.github.io/vuejs-nestjs-sept-2026/sitemap.xml
+Sitemap: https://stahe.github.io/dart-sept-2026/sitemap.xml
