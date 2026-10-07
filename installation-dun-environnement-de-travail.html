@@ -685,15 +685,15 @@
 <span class="normal"><a href="#__codelineno-0-6">6</a></span>
 <span class="normal"><a href="#__codelineno-0-7">7</a></span>
 <span class="normal"><a href="#__codelineno-0-8">8</a></span>
-<span class="normal"><a href="#__codelineno-0-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>name: dart_fondamentaux
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>description: Scripts du cours "Introduction au langage Dart par l'exemple"
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>publish_to: 'none'
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>environment:
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a>  sdk: '&gt;=3.3.0 &lt;4.0.0'
+<span class="normal"><a href="#__codelineno-0-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dart_fondamentaux</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scripts du cours "Introduction au langage Dart par l'exemple"</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="nt">publish_to</span><span class="p">:</span><span class="w"> </span><span class="s">'none'</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="nt">environment</span><span class="p">:</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="err">  </span><span class="nt">sdk</span><span class="p">:</span><span class="w"> </span><span class="s">'&gt;=3.3.0</span><span class="nv"> </span><span class="s">&lt;4.0.0'</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a>dependencies:
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a>  http: ^1.2.0
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a>  dio: ^5.4.0
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="nt">dependencies</span><span class="p">:</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="err">  </span><span class="nt">http</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^1.2.0</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="err">  </span><span class="nt">dio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^5.4.0</span>
 </code></pre></div></td></tr></table></div>
 <p>À la différence du YAML de [<em><mark style="background-color: #fff5ce">package.json</mark></em>] (au format JSON), [<em><mark style="background-color: #fff5ce">pubspec.yaml</mark></em>] est un fichier YAML à proprement parler - l&#x27;indentation y est significative, exactement comme en Python.</p>
 <p>Une fois ce fichier écrit, la commande [<em><mark style="background-color: #fff5ce">dart pub get</mark></em>] (équivalent de [<em><mark style="background-color: #fff5ce">npm install</mark></em>]) télécharge les dépendances déclarées et génère un fichier [<em><mark style="background-color: #fff5ce">pubspec.lock</mark></em>] (équivalent de [<em><mark style="background-color: #fff5ce">package-lock.json</mark></em>]), qui fige les versions exactes installées.</p>
@@ -701,8 +701,8 @@
 <p>Un script Dart minimal, [<em><mark style="background-color: #fff5ce">bonjour.dart</mark></em>] :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>  <span class="nb">print</span><span class="p">(</span><span class="s1">'Bonjour Dart !'</span><span class="p">);</span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="s1">'Bonjour Dart !'</span><span class="p">);</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <p>se lance avec :</p>
@@ -716,7 +716,7 @@
 <p>lancée sans argument depuis la racine d&#x27;un projet muni d&#x27;un [<em><mark style="background-color: #fff5ce">pubspec.yaml</mark></em>], analyse tous les fichiers [<em><mark style="background-color: #fff5ce">.dart</mark></em>] du projet : elle signale à la fois les erreurs de type (l&#x27;équivalent de [<em><mark style="background-color: #fff5ce">tsc</mark></em>]) et les problèmes de style couverts par les règles de lint activées (l&#x27;équivalent d&#x27;ESLint) - voir la section suivante pour l&#x27;activation de ces règles.</p>
 <h2 id="25-le-linter">2.5. <span style="color: #2e74b5">Le linter</span></h2>
 <p>ESLint est un outil externe, à installer et à configurer séparément (fichier [<em><mark style="background-color: #fff5ce">eslint.config.js</mark></em>], choix d&#x27;un preset...). Dart intègre son propre linter directement dans [<em><mark style="background-color: #fff5ce">dart analyze</mark></em>] : il suffit d&#x27;ajouter le paquet officiel [<em><mark style="background-color: #fff5ce">package:lints</mark></em>] aux [<em><mark style="background-color: #fff5ce">dev_dependencies</mark></em>] du [<em><mark style="background-color: #fff5ce">pubspec.yaml</mark></em>], puis de créer un fichier [<em><mark style="background-color: #fff5ce">analysis_options.yaml</mark></em>] à la racine du projet :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nl">include</span><span class="p">:</span><span class="w"> </span><span class="n">package</span><span class="p">:</span><span class="n">lints</span><span class="o">/</span><span class="n">recommended</span><span class="p">.</span><span class="na">yaml</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nt">include</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">package:lints/recommended.yaml</span>
 </code></pre></div></td></tr></table></div>
 <p>Ce seul fichier joue le rôle du [<em><mark style="background-color: #fff5ce">eslint.config.js</mark></em>] du cours TypeScript : il active un jeu de règles recommandées par l&#x27;équipe Dart (variables inutilisées, comparaisons suspectes, préférence pour [<em><mark style="background-color: #fff5ce">const</mark></em>], etc.), que [<em><mark style="background-color: #fff5ce">dart analyze</mark></em>] applique ensuite automatiquement.</p>
 <h2 id="26-extension-vscode-dart">2.6. <span style="color: #2e74b5">Extension VSCode Dart</span></h2>
